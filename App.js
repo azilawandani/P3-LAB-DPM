@@ -1,20 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { SafeAreaView, StyleSheet, Alert } from 'react-native';
+import HeaderProfil from './src/components/headerProfil';
+import NavBarProfil from './src/components/navBarProfil';
+import Lifecycle from './src/components/lifecycle';
 
-export default function App() {
+const App = () => {
+  const handleNavPress = (screen) => {
+    Alert.alert('Navigasi', `Menuju halaman ${screen}`);
+  };
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <HeaderProfil />
+      <Lifecycle />
+      <NavBarProfil onButtonPress={handleNavPress} />
+    </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#FFF0F5', // LavenderBlush for background
   },
 });
+
+export default App;
